@@ -1,0 +1,34 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+remote_theme: fongandrew/hydeout
+# Setup
+title:            Roman Bartusiak
+tagline:          'My personal page'
+description:      ''
+url:              https://bartusiak.ml
+baseurl:          ''
+
+
+author:
+  name:           'Roman Bartusiak'
+  url:            https://twitter.com/romanbartusiak
+
+paginate:         5
+# paginate_path:    '/page:num'
+                    # Or '/blog/page:num' if you want to move your index pages
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+# Custom vars
+version:            false
+sidebar_home_link:  true
+# sidebar_blog_link:  '/blog'   # By default, your home page is your blog
+                                # page. If you change your paginate_path,
+                                # set this to the root of the paginate_path
+                                # to enable a separate blog link.
+github:
+  repo:             https://github.com/riomus

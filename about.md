@@ -10,4 +10,7 @@ I am award winning PhD candidate in the field of Artificial Intelligence. I star
 
 Initiatives that I am taking part in:
 
-[<img src="/assets/img/roosters.png" alt="Roosters" style="display:inline"/>](https://roosters.io) [<img src="/assets/img/iambot.png" alt="IamBot" style="display:inline"/>](https://iambot.ai)
+[<img src="/assets/img/roosters.png" alt="Roosters" style="display:inline"/>](https://roosters.io) 
+
+
+Currently I am also an active freelancer in [Toptal network](https://www.toptal.com/resume/roman-bartusiak)

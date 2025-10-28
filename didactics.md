@@ -5,6 +5,7 @@ sidebar_link: true
 sidebar_sort_order: 4
 ---
 
+There was a time in my life where i have been a lecturer on Wroclaw University of Science and Technology in following topics:
 
  * [Large scale data processing](http://lsdp.ml)
  * [Probabilistic machine learning](http://probabilistyczne.ml/)

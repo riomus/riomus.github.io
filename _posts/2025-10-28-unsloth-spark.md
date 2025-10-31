@@ -16,7 +16,7 @@ The NVIDIA DGX Spark is a powerful little devbox for local model development, bo
 *   **Custom `xformers` Build**: Install `xformers` from a custom source branch that supports CUDA 12.1 until the official merge.
 *   **Upgrades**:  When upgrading base image - virtual environment needs to be recreated
 *   **Full repo with code**: [code is here](https://github.com/riomus/dgx-spark-unsloth)
-
+<!--more-->
 ## Unsloth Your DGX Spark: A Deep Dive
 
 The NVIDIA DGX Spark, a compact yet capable development box, offers an enticing platform for local large model fine-tuning with its impressive 128GB unified memory on a B10 chip. While not a speed demon, its memory capacity makes it a serious contender for experimenting with substantial models. However, getting the most out of it, especially with performance-critical libraries like Unsloth, requires a careful setup.

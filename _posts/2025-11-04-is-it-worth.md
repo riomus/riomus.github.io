@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Is it worht to use offcial NVidia PyTorch image?
+title: Is it worht to use offcial Nvidia PyTorch image?
 excerpt_separator:  <!--more-->
 tags: [DGX Spark, GPU, Performance, Nvidia, PyTorch]
 ---

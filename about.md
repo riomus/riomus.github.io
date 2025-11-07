@@ -14,7 +14,7 @@ sidebar_sort_order: 1
 
 ## 👨‍💻 About Me
 
-Award-winning **researcher in Artificial Intelligence**, entrepreneur, and passionate software developer. My journey with computers began at age 2, and by 13, I created my first working software. I hold a master's degree (with distinctions) and a Ph.D. in Artificial Intelligence from Wroclaw University of Science and Technology. My expertise spans **machine learning** (natural language processing, computer vision) and modern software engineering.
+Award-winning **researcher in Artificial Intelligence**, entrepreneur, and passionate software developer. My journey with computers began at age 2, and by 13, I created my first working software. I hold a master's degree (with distinctions) in Artificial Intelligence from Wroclaw University of Science and Technology. My expertise spans **machine learning** (natural language processing, computer vision) and modern software engineering.
 
 Besides working for numerous startups as a **full-stack developer**, I’ve served as a software architect at Nokia. I enjoy learning esoteric programming languages and continuously studying the state-of-the-art in machine learning methods.
 
@@ -95,7 +95,7 @@ text
 
 ## 🎓 Education
 
-- **Ph.D., Artificial Intelligence**  
+- **Ph.D., Artificial Intelligence, postponed**  
   _Wroclaw University of Science and Technology • 2015–2024_
 
 - **MSc, Computer Science (Grade: 5.5/A+)**  

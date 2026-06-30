@@ -56,10 +56,9 @@ body {
   }
 
   .toptal-badge-paragraph {
+    display: flex;
+    justify-content: center;
     margin-top: $section-spacing;
-    text-align: center;
-
-    #r { display: inline-block; }
   }
 }
 

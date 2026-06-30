@@ -54,6 +54,11 @@ body {
 
     .back-arrow { margin-right: 0.5rem; }
   }
+
+  .toptal-badge-paragraph {
+    margin-top: $section-spacing;
+    text-align: center;
+  }
 }
 
 // Container is flexbox as well -- we want content div to stretch and fill

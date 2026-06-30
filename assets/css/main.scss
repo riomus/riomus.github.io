@@ -21,9 +21,11 @@
 }
 .avatar-badge{
 	position: absolute;
-	right: -6%;
-	bottom: 2%;
+	right: 0;
+	bottom: 6%;
 	line-height: 0;
+	transform: scale(0.46);
+	transform-origin: bottom right;
 }
 
 #pubkey-link{

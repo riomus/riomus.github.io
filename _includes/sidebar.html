@@ -2,12 +2,12 @@
   <header>
     <{% if page.layout == "index" %}h1{% else %}div{% endif %} class="site-title">
 
-      <p class="avatar-paragraph">
+      <div class="avatar-paragraph">
         <span class="avatar-wrap">
           <img src="{{ site.baseurl }}/assets/img/me.jpg" class="avatar"/>
           <span class="avatar-badge">{% include toptal-badge.html %}</span>
         </span>
-      </p>
+      </div>
       <a href="{{ site.baseurl }}/">
         {% unless page.url == "/" %}
           <span class="back-arrow icon">{% include svg/back-arrow.svg %}</span>

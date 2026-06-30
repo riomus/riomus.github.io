@@ -8,11 +8,22 @@
 .avatar-paragraph{
 	text-align: center;
 }
-.avatar{
-	float: none;
+.avatar-wrap{
+	position: relative;
 	display: inline-block;
 	width: 50%;
+}
+.avatar{
+	float: none;
+	display: block;
+	width: 100%;
 	border-radius:50%;
+}
+.avatar-badge{
+	position: absolute;
+	right: -6%;
+	bottom: 2%;
+	line-height: 0;
 }
 
 #pubkey-link{

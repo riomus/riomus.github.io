@@ -3,7 +3,10 @@
     <{% if page.layout == "index" %}h1{% else %}div{% endif %} class="site-title">
 
       <p class="avatar-paragraph">
-        <img src="{{ site.baseurl }}/assets/img/me.jpg" class="avatar"/>
+        <span class="avatar-wrap">
+          <img src="{{ site.baseurl }}/assets/img/me.jpg" class="avatar"/>
+          <span class="avatar-badge">{% include toptal-badge.html %}</span>
+        </span>
       </p>
       <a href="{{ site.baseurl }}/">
         {% unless page.url == "/" %}
@@ -21,10 +24,5 @@
   {% endif %}
 
   {% include sidebar-icon-links.html %}
-
-  <p class="toptal-badge-paragraph">
-    {% include toptal-badge.html %}
-  </p>
-
   {% include copyright.html %}
 </div>

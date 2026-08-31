@@ -1,0 +1,25 @@
+# The Ruby manifest that carried this repo's only advisories is gone with the
+# Jekyll site. These keep the Astro toolchain and the deploy workflow watched
+# so the next one is caught rather than discovered.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    groups:
+      # One PR for the routine bumps; anything major still comes separately.
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    commit-message:
+      prefix: deps
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci

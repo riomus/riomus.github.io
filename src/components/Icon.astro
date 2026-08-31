@@ -13,7 +13,17 @@
 import { Icon as Iconify } from 'astro-icon/components';
 
 interface Props {
-  name: 'linkedin' | 'github' | 'rss' | 'key' | 'search' | 'arrow' | 'check' | 'ext' | 'mail';
+  name:
+    | 'linkedin'
+    | 'github'
+    | 'rss'
+    | 'key'
+    | 'search'
+    | 'arrow'
+    | 'check'
+    | 'ext'
+    | 'mail'
+    | 'mail-ui';
   class?: string;
 }
 
@@ -21,7 +31,11 @@ const SET = {
   github: 'simple-icons:github',
   linkedin: 'simple-icons:linkedin',
   rss: 'simple-icons:rss',
+  // Fill sits beside the solid brand marks in the footer. On a filled button
+  // the same glyph reverses out as a white slab, so UI contexts take the
+  // stroked weight instead.
   mail: 'ph:envelope-simple-fill',
+  'mail-ui': 'ph:envelope-simple-bold',
   key: 'ph:key-fill',
   arrow: 'ph:arrow-left-bold',
   ext: 'ph:arrow-square-out-bold',

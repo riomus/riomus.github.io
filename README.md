@@ -67,6 +67,20 @@ ship as redirect stubs in `public/`, because a redirect route emits a directory
 and a path containing a dot is not safe to serve that way on GitHub Pages.
 Don't delete them.
 
+## Fonts
+
+Archivo and Chivo Mono are self-hosted as subsets in `public/fonts/`, built by
+`node scripts/subset-fonts.mjs`. Fontsource ships latin and latin-ext as
+separate files carrying the whole Unicode block each, which cost 220 KB across
+four requests — and because "Wrocław" puts a latin-ext glyph in the hero, the
+85 KB latin-ext file sat on the critical path. The subsets are 48 KB in two
+files, with the variable axes intact.
+
+The character set in that script is deliberately wider than the glyphs used
+today (full Latin-1 plus European accents and typographic marks), so a new post
+does not silently lose a character. If you need one outside it, add it there
+and re-run.
+
 ## Deploying
 
 Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and

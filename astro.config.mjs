@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import { satteri } from '@astrojs/markdown-satteri';
 import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 /** Benchmark tables are wide by nature. Each one gets its own scroll
  * container so the page body never scrolls sideways on a phone. In-post
@@ -36,7 +37,7 @@ const dieDefaults = {
 
 export default defineConfig({
   site: 'https://bartusiak.ai',
-  integrations: [sitemap()],
+  integrations: [icon(), sitemap()],
   // Legacy Jekyll URLs ship as literal files in public/ (see the .html
   // stubs there), because a redirect route emits a directory and a path with
   // a dot in it is not safe to serve that way on GitHub Pages.

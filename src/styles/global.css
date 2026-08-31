@@ -209,12 +209,6 @@ img {
 .icon--ghost {
   color: var(--muted);
 }
-/* The octocat fills its viewBox more completely than the other marks, so it
-   is scaled down to sit at the same optical weight beside them. */
-.icon--dense {
-  width: 0.92em;
-  height: 0.92em;
-}
 
 .skip {
   position: absolute;

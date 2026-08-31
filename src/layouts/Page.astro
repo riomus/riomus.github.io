@@ -1,0 +1,40 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lede?: string;
+  /** A real count or date, shown under the lede. Never a kicker. */
+  datum?: string;
+}
+const { title, description, lede, datum } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <div class="wrap">
+    <header class="phead">
+      <h1 class="display">{title}</h1>
+      {lede && <p class="lede phead__lede">{lede}</p>}
+      {datum && <p class="phead__datum mono">{datum}</p>}
+    </header>
+    <div class="pbody"><slot /></div>
+  </div>
+</Base>
+
+<style>
+  .phead {
+    padding-block: clamp(2.75rem, 6vw, 4.5rem) 0;
+  }
+  .phead__lede {
+    margin: 1.1rem 0 0;
+  }
+  .phead__datum {
+    margin: 1rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--muted);
+  }
+  .pbody {
+    padding-block: clamp(2.25rem, 5vw, 3.5rem) clamp(3.5rem, 8vw, 6rem);
+  }
+</style>

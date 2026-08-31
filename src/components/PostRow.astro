@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import { postHref, readingTime } from '../utils';
+
+interface Props {
+  post: any;
+  showTags?: boolean;
+  /** The row's heading level. Rows under a section heading are h3; rows that
+   * sit directly under the page title are h2, so the outline never skips. */
+  level?: 2 | 3;
+  /** Space-separated tag slugs, so a list can filter without re-rendering. */
+  slugs?: string;
+  /** Lowercased searchable text, so filtering needs no second index. */
+  hay?: string;
+}
+const { post, showTags = false, level = 3, slugs, hay } = Astro.props;
+const H = `h${level}` as 'h2' | 'h3';
+const d = post.data.date;
+const iso = d.toISOString().slice(0, 10);
+const stamp = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const mins = readingTime(post.body);
+---
+
+<li class="row" data-slugs={slugs} data-hay={hay}>
+  <a class="row__link" href={postHref(post)}>
+    <span class="row__meta">
+      <time class="row__date" datetime={iso}>{stamp}</time>
+      <span class="row__read">{mins} min read</span>
+    </span>
+    <div>
+      <H class="row__t">{post.data.title}</H>
+      <p class="row__d">{post.data.description}</p>
+      {
+        post.data.finding && (
+          <p class="finding">
+            <span class="finding__k">Finding</span>
+            {post.data.finding}
+          </p>
+        )
+      }
+    </div>
+
+    {
+      showTags && post.data.tags.length > 0 && (
+        <span class="row__tags">
+          {post.data.tags.map((t: string) => (
+            <span class="chip">{t}</span>
+          ))}
+        </span>
+      )
+    }
+  </a>
+</li>

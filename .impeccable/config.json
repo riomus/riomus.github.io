@@ -1,0 +1,5 @@
+{
+  "detector": {
+    "ignoreFiles": ["src/components/ToptalBadge.astro"]
+  }
+}

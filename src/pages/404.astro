@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PostRow from '../components/PostRow.astro';
+
+const recent = (await getCollection('posts'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<Base title="Page not found" description="That address does not exist on bartusiak.ai.">
+  <div class="wrap lost">
+    <h1 class="display">This page doesn’t exist</h1>
+    <p class="lede lost__p">
+      The address you followed isn’t here. Try searching, or pick up one of the recent posts below.
+    </p>
+    <p class="lost__actions">
+      <a class="btn btn--accent" href="/">Go home</a>
+      <a class="btn btn--ghost" href="/search/">Search the posts</a>
+    </p>
+  </div>
+
+  <section class="section section--surface">
+    <div class="wrap">
+      <div class="section__head" data-reveal="up">
+        <h2 class="section__h">Recent posts</h2>
+        <a class="btn btn--ghost btn--sm" href="/writing/">All posts</a>
+      </div>
+      <ul class="rows" data-stagger>
+        {recent.map((p) => <PostRow post={p} />)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .lost {
+    padding-block: clamp(3.5rem, 9vw, 6.5rem);
+    max-width: var(--prose);
+  }
+  .lost__p {
+    margin: 1.1rem 0 0;
+  }
+  .lost__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 1.9rem 0 0;
+  }
+</style>

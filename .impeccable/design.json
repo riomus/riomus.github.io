@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-31T00:00:00Z",
+  "title": "Design System: bartusiak.ai",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Forest Accent",
+        "canonical": "#1d6e4f",
+        "note": "6.18:1 on white. The only green that carries text.",
+        "tonalRamp": ["#0a2a1e", "#0f3d2b", "#155238", "#1d6e4f", "#2c8c68", "#5bb08e", "#96cfb7", "#ecf4ef"]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Forest Accent Deep",
+        "canonical": "#17573f",
+        "tonalRamp": ["#08221a", "#0d3225", "#124530", "#17573f", "#237a59", "#4fa382", "#8ec8ae", "#e6f1ea"]
+      },
+      "accent-tint": {
+        "role": "primary",
+        "displayName": "Forest Tint",
+        "canonical": "#ecf4ef",
+        "note": "Ground for .finding, chip hover, and the search field focus glow."
+      },
+      "accent-line": {
+        "role": "primary",
+        "displayName": "Forest Line",
+        "canonical": "#bfdccd",
+        "note": "Prose link underline at rest and the .finding border."
+      },
+      "brand": {
+        "role": "secondary",
+        "displayName": "RBR Lime",
+        "canonical": "#95d600",
+        "note": "The RBR#720 logo colour. 1.77:1 on white — never text. Fill behind ink (9.97:1) or a drawn mark only: active filter chip, progress bar, ::selection, section tick, row underline, hero marker highlight.",
+        "tonalRamp": ["#1e2b00", "#334700", "#4a6600", "#638800", "#7cab00", "#95d600", "#c2ee5c", "#eafbb8"]
+      },
+      "brand-deep": {
+        "role": "secondary",
+        "displayName": "Lime Deep",
+        "canonical": "#557d00",
+        "note": "Used in exactly one place: .prose li::marker. 2.75:1 on lime, so never placed on a brand ground."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#191917",
+        "note": "Headings, strong text, primary button ground, and the text that sits on lime.",
+        "tonalRamp": ["#0d0d0c", "#191917", "#2c2a26", "#44413a", "#55524b", "#726d64", "#a49e93", "#d5d0c6"]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Body",
+        "canonical": "#55524b",
+        "note": "Running text, descriptions, nav links at rest."
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Warm Muted",
+        "canonical": "#726d64",
+        "note": "Carries real text, so held to the floor on every ground: white 5.14, surface 4.85, surface-2 4.52, tint 4.59."
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Warm Surface",
+        "canonical": "#faf8f5",
+        "note": "Footer, .section--surface bands, code blocks, table headers, row hover ground.",
+        "tonalRamp": ["#2a2823", "#4a473f", "#6d685e", "#989285", "#c3bcae", "#e7e3dc", "#f3f0ea", "#faf8f5"]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Warm Surface 2",
+        "canonical": "#f3f0ea",
+        "note": "Inline code, tag chips, nav link hover ground."
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e7e3dc",
+        "note": "The default 1px structural rule."
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "#d5d0c6",
+        "note": "Interactive and grabbable strokes: ghost button, search field, kbd, scrollbar thumb."
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero name and every page h1 (.display). Holds its line with font-stretch 97%, not tracking." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings (.section__h), always preceded by the 2.5rem x 3px lime tick." },
+      "title": { "displayName": "Title", "purpose": "List row titles (.row__t), capped at 62ch." },
+      "lede": { "displayName": "Lede", "purpose": "The one paragraph under a page title, capped at 58ch." },
+      "body": { "displayName": "Body", "purpose": "Document default." },
+      "prose": { "displayName": "Prose", "purpose": "Long-form article body at the 68ch measure, flow-spaced at 1.2em." },
+      "label": { "displayName": "Label", "purpose": "Uppercase structural slot key inside .strip, .toc, .panel, .ftr and table headers. Never a kicker above a heading." },
+      "mono": { "displayName": "Mono", "purpose": "Chivo Mono owns the measured things: code, numbers, table cells, findings, software names. Tabular figures and slashed zero." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 1px 2px rgba(25, 25, 23, 0.06)", "purpose": "Resting state for the primary/accent button and the search field; the ghost button acquires it only on hover." },
+      { "name": "shadow-md", "value": "0 4px 12px -2px rgba(25, 25, 23, 0.09), 0 2px 4px -2px rgba(25, 25, 23, 0.05)", "purpose": "Primary button on hover. Nothing else." },
+      { "name": "shadow-lg", "value": "0 14px 36px -10px rgba(25, 25, 23, 0.14), 0 4px 10px -4px rgba(25, 25, 23, 0.07)", "purpose": "The hero photograph only." },
+      { "name": "header-elevation", "value": "0 1px 0 rgba(25, 25, 23, 0.06), 0 6px 20px -8px rgba(25, 25, 23, 0.12)", "purpose": "Applied on .hdr[data-scrolled], which also sets border-bottom-color: transparent so the rule becomes the shadow instead of doubling with it." },
+      { "name": "focus-glow", "value": "0 0 0 3px var(--accent-tint)", "purpose": "Search field on :focus, paired with an accent border in place of the outline." },
+      { "name": "hairline-ring", "value": "0 0 0 1px var(--line)", "purpose": "The author portrait in .sig — a shadow used as a ring, not as lift." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.32, 0.72, 0, 1)", "purpose": "The single easing curve for every transition and animation in the system." },
+      { "name": "state", "value": "140ms", "purpose": "Colour and border-colour state changes: buttons, nav links, chips, prose links, anchors." },
+      { "name": "press", "value": "120ms", "purpose": "The button's translateY(1px) on :active." },
+      { "name": "row-underline", "value": "180ms", "purpose": "The lime .row::after growing in from the left via scaleX." },
+      { "name": "row-arrow", "value": "220ms", "purpose": "The arrow glyph fading in beside a row title on hover or focus; also the header's elevation transition." },
+      { "name": "stagger", "value": "620ms", "purpose": "Per-child transition for [data-stagger] lists, delayed 0/80/160/240/300/350ms and 390ms from the seventh child." },
+      { "name": "reveal", "value": "700ms", "purpose": "[data-reveal] scroll entrances: 'up' rises 22px, 'scale' comes up from scale(0.96) and blur(5px). Also the hero portrait's settle-fig." },
+      { "name": "settle", "value": "760ms", "purpose": "The one authored load moment: .settle children rise 16px at 60/150/230/310/390ms with animation-fill-mode backwards." }
+    ],
+    "breakpoints": [
+      { "name": "toc-rail", "value": "min-width: 1200px", "note": "The article gains its 14rem sticky TOC rail; below this .toc is display:none." },
+      { "name": "row-tags", "value": "max-width: 1000px", "note": "Row tags leave the third column and wrap under the content column." },
+      { "name": "about-cols", "value": "max-width: 900px", "note": "About page sidebar unsticks and becomes an auto-fit grid of 15rem panels." },
+      { "name": "hero", "value": "max-width: 820px", "note": "Hero goes single-column, portrait moves above the text at 160px." },
+      { "name": "header", "value": "max-width: 760px", "note": "Header wraps to two rows; nav takes its own full-width row." },
+      { "name": "row", "value": "max-width: 700px", "note": "Rows go single-column; date and reading time become an inline pair pulled to the top." },
+      { "name": "footer", "value": "max-width: 680px", "note": "Footer becomes one column." },
+      { "name": "about-rows", "value": "max-width: 640px", "note": "About jobs and definition rows go single-column with the date first." },
+      { "name": "nav-tight", "value": "max-width: 400px", "note": "Header nav links shrink to 0.8125rem." }
+    ],
+    "containers": [
+      { "name": "--page", "value": "1200px", "purpose": "Page furniture and the hero." },
+      { "name": "--page-text", "value": "1200px", "purpose": "Reading and list surfaces. A separate token from --page so content and furniture can diverge without a global edit; the two hold the same value today." },
+      { "name": "--prose", "value": "68ch", "purpose": "The long-form reading measure." },
+      { "name": "gutter", "value": "clamp(1.25rem, 5vw, 2.5rem)", "purpose": "Inline padding on every .wrap." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink-ground call to action; the only element carrying a shadow at rest.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Contact me</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.6rem 1.05rem; border-radius: var(--r-sm, 6px); border: 1px solid transparent; background: var(--ink, #191917); color: #fff; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: -0.006em; text-decoration: none; cursor: pointer; box-shadow: 0 1px 2px rgba(25,25,23,0.06); transition: background-color 140ms cubic-bezier(0.32,0.72,0,1), box-shadow 140ms cubic-bezier(0.32,0.72,0,1), transform 120ms cubic-bezier(0.32,0.72,0,1); } .ds-btn:hover { background: #000; box-shadow: 0 4px 12px -2px rgba(25,25,23,0.09), 0 2px 4px -2px rgba(25,25,23,0.05); } .ds-btn:active { transform: translateY(1px); box-shadow: 0 1px 2px rgba(25,25,23,0.06); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #1d6e4f); outline-offset: 2px; border-radius: 3px; }"
+    },
+    {
+      "name": "Accent Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "The forest-green call to action used for contact actions.",
+      "html": "<a class=\"ds-btn-accent\" href=\"#\">Contact me</a>",
+      "css": ".ds-btn-accent { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.6rem 1.05rem; border-radius: var(--r-sm, 6px); border: 1px solid transparent; background: var(--accent, #1d6e4f); color: #fff; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; box-shadow: 0 1px 2px rgba(25,25,23,0.06); transition: background-color 140ms cubic-bezier(0.32,0.72,0,1), box-shadow 140ms cubic-bezier(0.32,0.72,0,1), transform 120ms cubic-bezier(0.32,0.72,0,1); } .ds-btn-accent:hover { background: var(--accent-hover, #17573f); box-shadow: 0 4px 12px -2px rgba(25,25,23,0.09), 0 2px 4px -2px rgba(25,25,23,0.05); } .ds-btn-accent:active { transform: translateY(1px); box-shadow: 0 1px 2px rgba(25,25,23,0.06); } .ds-btn-accent:focus-visible { outline: 2px solid var(--accent, #1d6e4f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The secondary action: page-white with a strong hairline border and no resting shadow.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Read the full record</a>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.6rem 1.05rem; border-radius: var(--r-sm, 6px); border: 1px solid var(--line-strong, #d5d0c6); background: var(--bg, #fff); color: var(--ink, #191917); font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; box-shadow: none; transition: background-color 140ms cubic-bezier(0.32,0.72,0,1), border-color 140ms cubic-bezier(0.32,0.72,0,1), box-shadow 140ms cubic-bezier(0.32,0.72,0,1), transform 120ms cubic-bezier(0.32,0.72,0,1); } .ds-btn-ghost:hover { background: var(--surface, #faf8f5); border-color: var(--muted, #726d64); box-shadow: 0 1px 2px rgba(25,25,23,0.06); } .ds-btn-ghost:active { transform: translateY(1px); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--accent, #1d6e4f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Read-only tag on a list row; pill on the deeper warm surface.",
+      "html": "<span class=\"ds-chip\">pytorch<span class=\"ds-chip-n\">4</span></span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0.55rem; border-radius: 99px; background: var(--surface-2, #f3f0ea); color: var(--body, #55524b); font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 140ms cubic-bezier(0.32,0.72,0,1), color 140ms cubic-bezier(0.32,0.72,0,1); } a.ds-chip:hover { background: var(--accent-tint, #ecf4ef); color: var(--accent-hover, #17573f); } .ds-chip-n { font-variant-numeric: tabular-nums; color: var(--muted, #726d64); }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "The interactive sibling of the tag chip. Selected state is the one place a control fills with lime, and ink sits on top of it at 9.97:1.",
+      "html": "<button class=\"ds-fchip\" type=\"button\" aria-pressed=\"true\">All<span class=\"ds-fchip-n\">12</span></button> <button class=\"ds-fchip\" type=\"button\" aria-pressed=\"false\">DGX Spark<span class=\"ds-fchip-n\">3</span></button>",
+      "css": ".ds-fchip { display: inline-flex; align-items: baseline; gap: 0.4rem; padding: 0.4rem 0.8rem; border: 1px solid var(--line, #e7e3dc); border-radius: 99px; background: var(--bg, #fff); color: var(--body, #55524b); font: 500 0.875rem/1.2 'Archivo', ui-sans-serif, system-ui, sans-serif; cursor: pointer; transition: border-color 140ms cubic-bezier(0.32,0.72,0,1), background-color 140ms cubic-bezier(0.32,0.72,0,1), color 140ms cubic-bezier(0.32,0.72,0,1); } .ds-fchip:hover { border-color: var(--line-strong, #d5d0c6); color: var(--ink, #191917); } .ds-fchip-n { font-size: 0.75rem; color: var(--muted, #726d64); font-variant-numeric: tabular-nums; } .ds-fchip[aria-pressed='true'] { background: var(--brand, #95d600); border-color: var(--brand, #95d600); color: var(--ink, #191917); font-weight: 600; } .ds-fchip[aria-pressed='true'] .ds-fchip-n { color: var(--ink, #191917); font-weight: 500; } .ds-fchip:focus-visible { outline: 2px solid var(--accent, #1d6e4f); outline-offset: 2px; }"
+    },
+    {
+      "name": "Content Row",
+      "kind": "custom",
+      "refersTo": "row-link",
+      "description": "The site's signature structural unit: a hairline-ruled list row on a three-column grid, with a lime underline that grows in on hover.",
+      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\"><a class=\"ds-row-link\" href=\"#\"><span class=\"ds-row-meta\"><time class=\"ds-row-date\">14 Mar 2026</time><span class=\"ds-row-read\">7 min read</span></span><div><h3 class=\"ds-row-t\">What the DGX Spark actually does under load</h3><p class=\"ds-row-d\">Measured throughput across three runtimes, with the numbers nobody publishes.</p></div><span class=\"ds-row-tags\"><span class=\"ds-chip\">benchmark</span></span></a></li></ul>",
+      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line, #e7e3dc); } .ds-row { position: relative; border-bottom: 1px solid var(--line, #e7e3dc); } .ds-row::after { content: ''; position: absolute; left: 0; bottom: -1px; width: 7.5rem; height: 2px; background: var(--brand, #95d600); transform: scaleX(0); transform-origin: 0 50%; transition: transform 180ms cubic-bezier(0.32,0.72,0,1); } .ds-row:hover::after { transform: scaleX(1); } .ds-row-link { display: grid; grid-template-columns: 7.5rem minmax(0,1fr) minmax(0,13rem); gap: 0 2rem; padding: 1.35rem 0.75rem 1.45rem; margin-inline: -0.75rem; border-radius: var(--r-md, 10px); text-decoration: none; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; transition: background-color 160ms cubic-bezier(0.32,0.72,0,1); } .ds-row-link:hover { background: var(--surface, #faf8f5); } .ds-row-meta { display: block; padding-top: 0.22rem; } .ds-row-date { display: block; font-size: 0.8125rem; color: var(--muted, #726d64); font-variant-numeric: tabular-nums; white-space: nowrap; } .ds-row-read { display: block; margin-top: 0.2rem; font-size: 0.75rem; color: var(--muted, #726d64); font-variant-numeric: tabular-nums; } .ds-row-t { position: relative; margin: 0; font-size: 1.1875rem; max-width: 62ch; font-weight: 650; letter-spacing: -0.023em; line-height: 1.28; color: var(--ink, #191917); transition: color 140ms cubic-bezier(0.32,0.72,0,1); } .ds-row-t::after { content: '\\2192'; display: inline-block; margin-left: 0.4em; opacity: 0; transform: translateX(-0.3em); color: var(--accent, #1d6e4f); transition: opacity 220ms cubic-bezier(0.32,0.72,0,1), transform 220ms cubic-bezier(0.32,0.72,0,1); } .ds-row-link:hover .ds-row-t, .ds-row-link:focus-visible .ds-row-t { color: var(--accent, #1d6e4f); } .ds-row-link:hover .ds-row-date { color: var(--accent, #1d6e4f); } .ds-row-link:hover .ds-row-t::after, .ds-row-link:focus-visible .ds-row-t::after { opacity: 1; transform: none; } .ds-row-d { margin: 0.4rem 0 0; font-size: 0.95rem; line-height: 1.55; color: var(--body, #55524b); max-width: 74ch; text-wrap: pretty; } .ds-row-tags { display: flex; flex-wrap: wrap; align-content: start; justify-content: flex-end; gap: 0.4rem; padding-top: 0.3rem; } @media (max-width: 1000px) { .ds-row-link { grid-template-columns: 7.5rem minmax(0,1fr); } .ds-row-tags { grid-column: 2; justify-content: flex-start; padding-top: 0.85rem; } } @media (max-width: 700px) { .ds-row-link { grid-template-columns: minmax(0,1fr); gap: 0.35rem; } .ds-row-tags { grid-column: 1; } .ds-row-meta { padding-top: 0; order: -1; display: flex; gap: 0.75rem; align-items: baseline; } .ds-row-read { margin-top: 0; } }"
+    },
+    {
+      "name": "Finding Callout",
+      "kind": "custom",
+      "refersTo": "finding",
+      "description": "The one measured line a post is worth reading for. The only tinted callout in the system.",
+      "html": "<p class=\"ds-finding\"><span class=\"ds-finding-k\">Finding</span>62 tok/s sustained at 4-bit, 2.3x the vendor figure.</p>",
+      "css": ".ds-finding { display: flex; gap: 0.55rem; align-items: flex-start; margin: 0.85rem 0 0; padding: 0.55rem 0.75rem; border: 1px solid var(--accent-line, #bfdccd); border-radius: var(--r-sm, 6px); background: var(--accent-tint, #ecf4ef); font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 1rem; line-height: 1.4; color: var(--ink, #191917); font-variant-numeric: tabular-nums; font-feature-settings: 'zero' 1; } .ds-finding-k { flex: none; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent, #1d6e4f); padding-top: 0.15em; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "The writing page filter input, with an inline / shortcut key that hides once the field is in use.",
+      "html": "<form class=\"ds-sf\" role=\"search\"><div class=\"ds-sf-field\"><input class=\"ds-sf-in\" type=\"search\" placeholder=\"Search posts\" aria-label=\"Search posts\"><kbd class=\"ds-sf-kbd\">/</kbd></div><p class=\"ds-sf-count\">12 posts</p></form>",
+      "css": ".ds-sf { margin: 0 0 1rem; } .ds-sf-field { position: relative; max-width: 32rem; } .ds-sf-in { width: 100%; padding: 0.7rem 0.9rem; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; color: var(--ink, #191917); background: var(--bg, #fff); border: 1px solid var(--line-strong, #d5d0c6); border-radius: var(--r-sm, 6px); box-shadow: 0 1px 2px rgba(25,25,23,0.06); caret-color: var(--accent, #1d6e4f); transition: border-color 140ms cubic-bezier(0.32,0.72,0,1), box-shadow 140ms cubic-bezier(0.32,0.72,0,1); } .ds-sf-in::placeholder { color: var(--muted, #726d64); } .ds-sf-in:focus { outline: none; border-color: var(--accent, #1d6e4f); box-shadow: 0 0 0 3px var(--accent-tint, #ecf4ef); } .ds-sf-kbd { position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); padding: 0.12rem 0.42rem; border: 1px solid var(--line-strong, #d5d0c6); border-bottom-width: 2px; border-radius: 5px; background: var(--surface, #faf8f5); color: var(--muted, #726d64); font: 600 0.75rem/1.4 'Chivo Mono', ui-monospace, monospace; pointer-events: none; } .ds-sf-count { margin: 1.25rem 0 0; font-size: 0.8125rem; color: var(--muted, #726d64); font-variant-numeric: tabular-nums; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky, opaque, 4rem tall. The current page is marked by weight and colour, never by an underline or a pill.",
+      "html": "<header class=\"ds-hdr\"><div class=\"ds-hdr-in\"><a class=\"ds-hdr-me\" href=\"/\"><span class=\"ds-hdr-name\">Roman Bartusiak</span></a><nav class=\"ds-hdr-nav\" aria-label=\"Primary\"><a class=\"ds-hdr-link\" href=\"#\" aria-current=\"page\">Writing</a><a class=\"ds-hdr-link\" href=\"#\">About</a><a class=\"ds-hdr-link\" href=\"#\">Software</a><a class=\"ds-hdr-link\" href=\"#\">Teaching</a></nav></div><span class=\"ds-progress\"></span></header>",
+      "css": ".ds-hdr { position: relative; background: var(--bg, #fff); border-bottom: 1px solid var(--line, #e7e3dc); font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-hdr-in { display: flex; align-items: center; gap: 1.25rem; height: 4rem; padding-inline: clamp(1.25rem, 5vw, 2.5rem); } .ds-hdr-me { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 650; color: var(--ink, #191917); text-decoration: none; letter-spacing: -0.017em; flex: none; } .ds-hdr-name { white-space: nowrap; } .ds-hdr-nav { display: flex; align-items: center; gap: 0.15rem; margin-left: auto; min-width: 0; } .ds-hdr-link { padding: 0.4rem 0.7rem; border-radius: var(--r-sm, 6px); font-size: 0.9rem; color: var(--body, #55524b); text-decoration: none; white-space: nowrap; transition: background-color 140ms cubic-bezier(0.32,0.72,0,1), color 140ms cubic-bezier(0.32,0.72,0,1); } .ds-hdr-link:hover { background: var(--surface-2, #f3f0ea); color: var(--ink, #191917); } .ds-hdr-link[aria-current='page'] { color: var(--ink, #191917); font-weight: 600; } .ds-hdr-link:focus-visible { outline: 2px solid var(--accent, #1d6e4f); outline-offset: 2px; } .ds-progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; transform: scaleX(0.42); transform-origin: 0 50%; background: var(--brand, #95d600); }"
+    },
+    {
+      "name": "Sidebar Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The about page's sidebar container: hairline border, no shadow. Depth here is the rule, not a lift.",
+      "html": "<aside class=\"ds-panel\"><p class=\"ds-panel-h\">Currently</p><div class=\"ds-panel-item\"><p class=\"ds-panel-t\">Founder / Researcher</p><p class=\"ds-panel-m\">Causality · Roosters</p><p class=\"ds-panel-w\">Wroclaw, Poland</p></div><div class=\"ds-panel-item\"><p class=\"ds-panel-t\">Freelance</p><p class=\"ds-panel-m\">Toptal, top 3% since 2018</p></div></aside>",
+      "css": ".ds-panel { padding: 1.15rem 1.25rem 1.35rem; border: 1px solid var(--line, #e7e3dc); border-radius: var(--r-md, 10px); background: var(--bg, #fff); font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-panel-h { margin: 0 0 0.9rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted, #726d64); } .ds-panel-item + .ds-panel-item { margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--line, #e7e3dc); } .ds-panel-t { margin: 0; font-size: 0.925rem; font-weight: 650; line-height: 1.35; color: var(--ink, #191917); } .ds-panel-m { margin: 0.2rem 0 0; font-size: 0.85rem; color: var(--body, #55524b); line-height: 1.45; } .ds-panel-w { margin: 0.3rem 0 0; font-size: 0.8125rem; color: var(--muted, #726d64); }"
+    },
+    {
+      "name": "Table of Contents Rail",
+      "kind": "nav",
+      "refersTo": "toc",
+      "description": "The docs rail, present only at 1200px and above. Active entry is set by scroll spy and takes an accent left border.",
+      "html": "<nav class=\"ds-toc\" aria-label=\"On this page\"><p class=\"ds-toc-h\">On this page</p><ul class=\"ds-toc-list\"><li><a class=\"ds-toc-l\" href=\"#a\">The rig</a></li><li><a class=\"ds-toc-l\" data-active href=\"#b\">Method</a></li><li><a class=\"ds-toc-l ds-toc-l--sub\" href=\"#c\">Throughput</a></li></ul><p class=\"ds-toc-find\"><span class=\"ds-toc-fk\">Finding</span>62 tok/s sustained at 4-bit.</p></nav>",
+      "css": ".ds-toc { display: block; width: 14rem; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-toc-h { margin: 0 0 0.75rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted, #726d64); } .ds-toc-list { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line, #e7e3dc); } .ds-toc-l { display: block; padding: 0.32rem 0 0.32rem 0.85rem; margin-left: -1px; border-left: 1px solid transparent; font-size: 0.85rem; line-height: 1.4; color: var(--muted, #726d64); text-decoration: none; transition: color 160ms cubic-bezier(0.32,0.72,0,1), border-color 160ms cubic-bezier(0.32,0.72,0,1); } .ds-toc-l:hover { color: var(--ink, #191917); } .ds-toc-l--sub { padding-left: 1.6rem; font-size: 0.8125rem; } .ds-toc-l[data-active] { color: var(--accent, #1d6e4f); border-left-color: var(--accent, #1d6e4f); font-weight: 600; } .ds-toc-l:focus-visible { outline: 2px solid var(--accent, #1d6e4f); outline-offset: 2px; } .ds-toc-find { margin: 1.5rem 0 0; padding-top: 1.1rem; border-top: 1px solid var(--line, #e7e3dc); font-family: 'Chivo Mono', ui-monospace, monospace; font-size: 0.75rem; line-height: 1.55; color: var(--ink, #191917); } .ds-toc-fk { display: block; margin-bottom: 0.3rem; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent, #1d6e4f); }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Every section heading is preceded by the 2.5rem x 3px lime tick — one of the five fixed roles for the brand colour.",
+      "html": "<div class=\"ds-sec-head\"><div><h2 class=\"ds-sec-h\">Writing</h2><p class=\"ds-sec-sub\">Measured work, mostly on hardware and runtimes other people are guessing about.</p></div></div>",
+      "css": ".ds-sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.75rem; font-family: 'Archivo', ui-sans-serif, system-ui, sans-serif; } .ds-sec-h { margin: 0; font-size: clamp(1.6rem, 2.6vw, 2rem); font-weight: 650; font-stretch: 88%; letter-spacing: -0.026em; color: var(--ink, #191917); line-height: 1.2; text-wrap: balance; } .ds-sec-h::before { content: ''; display: block; width: 2.5rem; height: 3px; margin-bottom: 1rem; background: var(--brand, #95d600); } .ds-sec-sub { margin: 0.35rem 0 0; font-size: 0.95rem; color: var(--muted, #726d64); max-width: 60ch; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Standard, Executed Properly",
+    "overview": "This world has no concept and no metaphor, and that is the commitment rather than the absence of one. Two concept worlds were considered and set aside; what ships is the category standard for a technical personal site, held to the craft bar of Stripe/Linear documentation and joshwcomeau.com. The quality lives entirely in the spacing system, the type scale, the state coverage, and the details nobody notices until they are missing. The stylesheet says this in its own opening comment; treat it as the governing brief.\n\nThe register is warm and human, never clinical. Every neutral in the palette carries yellow — there is no grey anywhere in the system — and that single decision does most of the work of making a dense technical page feel like a person made it. Structure is expressed with hairline rules and tonal surfaces rather than boxes: lists with rules, never grids of identical cards. The page is a light ground (color-scheme: light, no dark theme) with a deep forest accent that carries text and a lime brand mark that never does.\n\nDensity is documentation-density: a 68ch reading measure inside a 1200px frame, an eight-step type ramp that tops out at 3.25rem, and section rhythm on a clamp() so the page breathes the same way at every width. Motion is one authored moment on load and then scroll reveals that vary by element type — all of it gated so a JS-off or reduced-motion visitor gets the finished page with nothing hidden.",
+    "keyCharacteristics": [
+      "Warm neutrals throughout — every surface and rule carries yellow, never grey",
+      "Two greens with separate jobs: one carries text, one is only ever a fill or a drawn mark",
+      "Lists with hairline rules; no card grids, no drop-shadowed tiles at rest",
+      "One variable type family (Archivo) using its width axis, plus one mono sibling (Chivo Mono)",
+      "Two container widths — page furniture and reading measure — plus a 68ch prose column",
+      "Motion is authored per element type, gated on a .js class, and fully reversible under prefers-reduced-motion",
+      "Every text token meets 4.5:1 on every ground it actually sits on, and the ratios are recorded in the stylesheet"
+    ],
+    "rules": [
+      { "name": "The Two Greens Rule", "body": "--accent carries text; --brand never does. Lime is a fill behind ink, a 2-3px drawn mark, or a selection ground — nothing else. Any new use of --brand must place ink on top of it or draw it as a bar, tick, or rule.", "section": "colors" },
+      { "name": "The Warm Neutral Rule", "body": "There is no grey in this system. Every surface, rule, and muted text value carries yellow. A neutral pulled from a generic scale will read cold against the ground and is wrong by definition here.", "section": "colors" },
+      { "name": "The Ink-On-Lime Rule", "body": "Text on --brand is --ink (9.97:1). --brand-deep on lime is only 2.75:1 and was rejected; where an active filter chip needs to separate its count from its label, weight does the separating, not colour.", "section": "colors" },
+      { "name": "The Recorded Ratio Rule", "body": "A new text colour ships with its measured contrast against every ground it lands on, written into the stylesheet as a comment beside the token. The existing tokens all carry theirs.", "section": "colors" },
+      { "name": "The Width-Axis Rule", "body": "Display and heading sizes hold their line with font-stretch (97% display, 88% section head, 94% prose h3, 90% about section head), never with letter-spacing games. Tracking is used only as optical correction and is always negative at display sizes and positive on uppercase labels.", "section": "typography" },
+      { "name": "The No-Kicker Rule", "body": "Nothing sits above a heading as a decorative eyebrow. Page.astro exposes a datum prop for a real count or date shown under the lede, and its own type says 'Never a kicker.' Uppercase labels exist only as structural keys inside components where they name a slot.", "section": "typography" },
+      { "name": "The Tabular Number Rule", "body": "Any number a reader might compare — dates, reading times, counts, table cells, benchmark figures — carries font-variant-numeric: tabular-nums. Chivo Mono additionally runs font-feature-settings: 'zero' 1 so a slashed zero distinguishes it from an O in measured output.", "section": "typography" },
+      { "name": "The Latin-Ext Rule", "body": "Both faces ship a latin-ext subset and both must keep it. Dropping it to save bytes breaks Polish, which appears throughout the record and the footer.", "section": "typography" },
+      { "name": "The List, Not Grid Rule", "body": "Collections of things are <ul class=\"rows\"> — a top rule, a bottom rule per row, and nothing else. No card grid, no tile, no shadowed panel per item. The structure is the rules between the rows.", "section": "layout" },
+      { "name": "The Full-Measure Rule", "body": "A row uses its whole width: metadata left, content centre, tags right. Content never hugs the left edge of a wide frame with dead space beside it.", "section": "layout" },
+      { "name": "The Measure Rule", "body": "Anything a person reads in sentences is capped: prose at 68ch, ledes at 58ch, row descriptions at 74ch, row titles at 62ch, section subheads at 60ch, about-page copy at 66ch, the footer signature at 40ch.", "section": "layout" },
+      { "name": "The Flat-Until-State Rule", "body": "Surfaces are flat at rest. A shadow is a response to state — hover, focus, scroll — or a lift for the single photograph. A panel, card, row, figure, or table gets a 1px --line border and no shadow.", "section": "elevation" },
+      { "name": "The Opaque Header Rule", "body": "The header is solid --bg, never translucent and never blurred. A blurred bar reads well until a large dark heading passes under it: at any alpha that lets the blur show, the heading shows too. The elevation shadow does the separating instead.", "section": "elevation" },
+      { "name": "The Scroll-Hint Rule", "body": "Any container that scrolls horizontally — code blocks, tables — shows that it scrolls. Code blocks carry local-attachment gradient shadows; tables live in a bordered .tablewrap with overflow-x: auto.", "section": "elevation" },
+      { "name": "The .js Gate Rule", "body": "Every hidden-then-revealed state is scoped under a .js class that an inline script in <head> sets before first paint — and only when prefers-reduced-motion is not set. With JS off, or with reduced motion, the page renders finished, with nothing hidden waiting to be shown. Never write a reveal state that is not behind .js.", "section": "components" },
+      { "name": "The Per-Element Motion Rule", "body": "Motion is chosen per element type, not applied globally: content rises, lists deal a row at a time, figures scale out of blur. One entrance applied to everything is the anti-pattern this system was built against.", "section": "components" }
+    ],
+    "dos": [
+      "Do use --accent (#1d6e4f) for any green text, and --brand (#95d600) only as a fill behind ink or as a 2-3px drawn mark.",
+      "Do record a new text colour's measured contrast against every ground it lands on, as a comment beside the token, the way --muted and --accent already do.",
+      "Do build collections as <ul class=\"rows\"> with hairline rules and the three-column .row__link grid.",
+      "Do put every icon through Icon.astro so it carries the global .icon class — page-scoped Astro styles cannot reach an SVG rendered inside another component, so any icon override must come from global.css or from the parent's font-size.",
+      "Do cap reading widths: 68ch prose, 58ch lede, 74ch descriptions, 66ch about copy.",
+      "Do give every horizontally scrolling container a visible hint — .tablewrap for tables, the gradient scroll shadow for code.",
+      "Do put a new hidden-then-revealed state behind .js [data-reveal] or .js [data-stagger], and confirm the page still reads correctly with the class removed.",
+      "Do use font-variant-numeric: tabular-nums on anything numeric a reader might compare.",
+      "Do state the container's job when choosing a width: --page for furniture and hero, --page-text for reading and list surfaces. They hold the same value today and are meant to be edited independently.",
+      "Do keep both latin and latin-ext font subsets; Polish text appears throughout."
+    ],
+    "donts": [
+      "Don't use --brand as a text colour, a link colour, or a border around text. It is 1.77:1 on white.",
+      "Don't put --brand-deep on a lime ground — it measures 2.75:1. Separate with weight instead.",
+      "Don't introduce a grey. Every neutral in this system carries yellow, and a cold one will read as a mistake beside them.",
+      "Don't rebuild a list as a grid of cards, and don't give a resting panel, row, figure, or table a shadow. Depth here is rules and tonal surfaces.",
+      "Don't make the header translucent or blurred. It is solid --bg; a large dark heading passing underneath will show through at any alpha that lets a blur read.",
+      "Don't add a kicker or eyebrow above a heading. Uppercase labels are structural slot keys inside .strip, .toc, .panel, and table headers only; a real count or date goes below the lede via Page.astro's datum prop.",
+      "Don't insert or wrap elements inside .settle, [data-stagger], or any list whose timing comes from :nth-child without re-checking the delay ramp — those delays are positional, and a new wrapper silently collapses the whole sequence onto one step.",
+      "Don't add a margin-top to a direct child of .prose to space it; .prose > * + * owns flow spacing at 1.2em, and a local override desynchronises the column.",
+      "Don't hide the reading-progress bar under prefers-reduced-motion. It is an orientation aid and runs regardless; the reveal animations are the things that stop.",
+      "Don't redraw, recolour, or restyle the Toptal badge. It is Toptal's brand asset — place it and set scale, nothing else. Its class names stay scoped under #r.",
+      "Don't widen an element past the prose measure except as a deliberate .plate, which uses the min(var(--page), 100vw - gutters) + margin: 2.5rem 50% + translateX(-50%) escape on purpose.",
+      "Don't add a dark theme. The system declares color-scheme: light and every contrast ratio in it is measured against warm light grounds."
+    ]
+  }
+}

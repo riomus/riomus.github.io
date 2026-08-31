@@ -1,167 +1,74 @@
-# Hydeout
+# bartusiak.ai
 
-Hydeout updates the original [Hyde](https://github.com/poole/hyde)
-theme for [Jekyll](http://jekyllrb.com) 3.x and adds new functionality.
+Personal site of Roman Bartusiak — AI researcher and machine learning engineer.
+Astro, static output, deployed to GitHub Pages.
 
-![Desktop](/_screenshots/1.png?raw=true)
-<img alt="Mobile home page" src="/_screenshots/2.png?raw=true" width="300px" />
-<img alt="Mobile post page" src="/_screenshots/3.png?raw=true" width="300px" />
+## Running it
 
-### Usage
-
-Hydeout is available as the `jekyll-theme-hydeout` Ruby Gem.
-Add `gem "jekyll-theme-hydeout", "~> 3.4"` to your Gemfile and run
-`bundle install`.
-
-If you're installing on Github pages, you may also have to add
-`remote_theme: fongandrew/hydeout` to your `_config.yml`. [See the Github
-instructions for more details.](https://help.github.com/articles/adding-a-jekyll-theme-to-your-github-pages-site/)
-
-Hydeout uses pagination, so if you have an `index.md`, you'll need to swap
-it with an `index.html` that uses the `index` layout:
-
-```
----
-layout: index
-title: Home
----
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # -> dist/
+npm run preview  # serve the built output
 ```
 
-You'll also need to add a setting to `_config.yml` telling Jekyll how many posts
-to include per page (e.g. `paginate: 5`).
+## Writing a volume
 
-### Keep It Simple
+Posts live in `src/content/posts/` as `YYYY-MM-DD-slug.md`. The date in the
+filename sets the URL (`/YYYY/MM/DD/slug/`) and the volume number, which is
+just the post's position in the run, oldest first.
 
-In keeping with the original Hyde theme, Hydeout aims to keep the overall
-design lightweight and plugin-free. JavaScript is currently limited only
-to Disqus and Google Analytics (and is only loaded if you provide configuration
-variables).
-
-Hydeout makes heavy use of Flexbox in its CSS. If Flexbox is not available,
-the CSS degrades into a single column layout.
-
-### Customization
-
-Hydeout replaces Hyde's class-based theming with the use
-of the following SASS variables:
-
-```scss
-$sidebar-bg-color: #202020 !default;
-$sidebar-sticky: true !default;
-$layout-reverse: false !default;
-$link-color: #268bd2 !default;
+```yaml
+---
+title: "What the run was"
+date: 2025-11-07
+tags: ["DGX Spark", "PyTorch"]
+description: "One sentence that has to work as the excerpt and the meta description."
+rig: "DGX Spark · GB10"                 # optional
+stack: "NGC PyTorch vs. host"           # optional
+finding: "+50% TFLOPS · 8192² bf16"     # optional
+---
 ```
 
-To override these variables, create your own `assets/css/main.scss` file.
-Define your own variables, then import in Hydeout's SCSS, like so:
+`rig`, `stack` and `finding` are the spec strip: the same three slots on every
+volume, so two benchmarks can be compared without opening both. Leave them out
+for a post that measures nothing and the strip is omitted.
 
-```scss
----
-# Jekyll needs front matter for SCSS files
----
+Tags are grouped by slug, so `NVIDIA` and `Nvidia` are one tag. Prefer the
+spelling already in use.
 
-$sidebar-bg-color: #ac4142;
-$link-color: #ac4142;
-$sidebar-sticky: false;
-@import "hydeout";
-```
+## Layout of the repo
 
-See the [_variables](_sass/hydeout/_variables.scss) file for other variables
-you can override.
+| Path | What it holds |
+|---|---|
+| `src/content/posts/` | The volumes |
+| `src/data/record.ts` | CV facts: experience, publications, software, courses |
+| `src/styles/global.css` | The visual world (see below) |
+| `src/layouts/` | `Base` (pad ring, footer), `Page` (titled pages) |
+| `src/components/` | Volume block, scale bar, icons, Toptal badge |
+| `public/` | Fonts, images, PGP key, CNAME, legacy URL stubs |
+| `PRODUCT.md` | Durable product truth |
+| `DESIGN.md` | The visual system, recorded from the built site |
 
-You can see the full set of partials you can replace in the
-[`_includes`](_includes) folder, but there are a few worth noting:
+## The design
 
-* `_includes/copyright.html` - Insert your own copyright here.
+The site is a die floorplan: gutterless blocks tiling the frame, split by the
+hairline scribe, navigated from a bond-pad ring. Block area encodes importance.
+Hovering a block racks the stage in — its texture magnifies and its label
+widens on Archivo's width axis.
 
-* `_includes/custom-head.html` - Insert custom head tags (e.g. to load your
-  own stylesheets)
+The direction contract sits as an HTML comment at the top of `<body>` in
+`src/layouts/Base.astro`. Read it before changing the look.
 
-* `_includes/custom-foot.html` - Insert custom elements at the end of the
-  body (e.g. for custom JS)
+## URLs
 
-* `_includes/custom-nav-links.html` - Additional nav links to insert at the
-  end of the list of links in the sidebar.
+Posts published under Jekyll used `/YYYY/MM/DD/slug.html`. Those exact paths
+ship as redirect stubs in `public/`, because a redirect route emits a directory
+and a path containing a dot is not safe to serve that way on GitHub Pages.
+Don't delete them.
 
-  Pro-tip: The `nav`s in the sidebar are flexboxes. Use the `order` property
-  to order your links.
+## Deploying
 
-* `_includes/custom-icon-links.html`- Additional icon links to insert at the
-  end of the icon links at the bottom of the sidebar. You can use the `order`
-  property to re-order.
-
-* `_includes/favicons.html` - Replace references to `favicon.ico` and
-  `favicon.png` with your own favicons references.
-
-* `_includes/font-includes.html` - The Abril Fatface font used for the site
-  title is loaded here. If you're overriding that font in the CSS, be sure
-  to also remove the font load reference here.
-
-### New Features
-
-* Hydeout adds a new tags page (accessible in the sidebar). Just create a
-  new page with the tags layout:
-
-  ```
-  ---
-  layout: tags
-  title: Tags
-  ---
-  ```
-
-* Hydeout adds a new "category" layout for dedicated category pages.
-  Category pages are automatically added to the sidebar. All other pages
-  must have `sidebar_link: true` in their front matter to show up in
-  the sidebar. To create a category page, use the `category` layout"
-
-  ```
-  ---
-  layout: category
-  title: My Category
-  ---
-
-  Description of "My Category"
-  ```
-
-* You can control how pages are sorted by using the `sidebar_sort_order`
-  parameter in the front matter. This works for both category and non-category
-  pages, although non-category pages will always come first. Take a look at
-  [`_includes/sidebar-nav-links.html`](./_includes/sidebar-nav-links.html) if
-  you want to customize this behavior.
-
-  ```
-  ---
-  layout: page
-  title: My page
-  sidebar_sort_order: 123
-  ---
-
-  Some content.
-  ```
-
-* A simple redirect-to-Google search is available. Just create a page with
-  the `search` layout.
-
-  ```
-  ---
-  layout: search
-  title: Google Search
-  ---
-  ```
-
-* Disqus integration is ready out of the box. Just add the following to
-  your config file:
-
-  ```yaml
-  disqus:
-    shortname: my-disqus-shortname
-  ```
-
-  If you don't want Disqus or want to use something else, override
-  `comments.html`.
-
-* For Google Analytics support, define a `google_analytics` variable with
-  your property ID in your config file.
-
-There's also a bunch of minor tweaks and adjustments throughout the
-theme. Hope this works for you!
+Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and
+publishes `dist/` to GitHub Pages. The repo's Pages source must be set to
+**GitHub Actions**, not a branch.

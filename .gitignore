@@ -47,3 +47,13 @@ Gemfile.lock
 _config.dev.yml
 .vscode
 *.gem
+# Astro
+dist/
+.astro/
+node_modules/
+
+# Impeccable working files. The design system (DESIGN.md, design.json) and
+# the product record are tracked; the review screenshots are 19MB of
+# regenerable build artefacts.
+.impeccable/review/
+.impeccable/questions/

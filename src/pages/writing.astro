@@ -1,0 +1,237 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../layouts/Page.astro';
+import PostRow from '../components/PostRow.astro';
+import { tagSlug } from '../utils';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const first = posts[posts.length - 1]?.data.date.getFullYear();
+const last = posts[0]?.data.date.getFullYear();
+
+const counts = new Map<string, { tag: string; n: number }>();
+for (const p of posts)
+  for (const t of p.data.tags) {
+    const k = tagSlug(t);
+    const e = counts.get(k) ?? { tag: t, n: 0 };
+    e.n += 1;
+    counts.set(k, e);
+  }
+const topics = [...counts.values()].sort((a, b) => b.n - a.n || a.tag.localeCompare(b.tag));
+---
+
+<Page
+  title="Writing"
+  description="Everything Roman Bartusiak has published on bartusiak.ai — measured work on DGX Spark, PyTorch, and the runtimes underneath production ML."
+  lede="Measured work, mostly on hardware and runtimes other people are guessing about. Every post that reports a benchmark carries the rig it ran on and what it found."
+  datum={`${posts.length} posts · ${first === last ? first : `${first}–${last}`}`}
+>
+  <form class="sf" role="search" onsubmit="return false">
+    <label class="sr-only" for="q">Search posts</label>
+    <div class="sf__field">
+      <input
+        id="q"
+        class="sf__in"
+        type="search"
+        autocomplete="off"
+        placeholder="Search every post — bf16, drop_caches, xformers…"
+      />
+      <kbd class="sf__kbd" data-kbd>/</kbd>
+    </div>
+  </form>
+
+  <div class="filter" role="group" aria-label="Filter by topic">
+    <button class="fchip" type="button" data-topic="" aria-pressed="true">
+      All<span class="fchip__n">{posts.length}</span>
+    </button>
+    {
+      topics.map((t) => (
+        <button class="fchip" type="button" data-topic={tagSlug(t.tag)} aria-pressed="false">
+          {t.tag}
+          <span class="fchip__n">{t.n}</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <ul class="rows" data-stagger>
+    {
+      posts.map((p) => (
+        <PostRow
+          post={p}
+          showTags
+          level={2}
+          slugs={p.data.tags.map((t: string) => tagSlug(t)).join(' ')}
+          hay={`${p.data.title} ${p.data.description} ${p.data.tags.join(' ')} ${
+            p.data.finding ?? ''
+          } ${p.data.rig ?? ''} ${p.body?.slice(0, 6000) ?? ''}`.toLowerCase()}
+        />
+      ))
+    }
+  </ul>
+
+  <p class="sf__count" aria-live="polite" data-count>{posts.length} posts</p>
+
+  <p class="noneleft" data-none hidden>Nothing matches that. Try a flag, a dtype or a library name.</p>
+
+  <script>
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-topic]'));
+    const rows = Array.from(document.querySelectorAll<HTMLElement>('[data-slugs]'));
+    const none = document.querySelector<HTMLElement>('[data-none]');
+    const count = document.querySelector<HTMLElement>('[data-count]');
+    const q = document.getElementById('q') as HTMLInputElement | null;
+    const kbd = document.querySelector<HTMLElement>('[data-kbd]');
+    let topic = '';
+
+    const run = () => {
+      const terms = (q?.value ?? '').toLowerCase().split(/\s+/).filter(Boolean);
+      let shown = 0;
+      for (const r of rows) {
+        const byTopic = !topic || (r.dataset.slugs ?? '').split(' ').includes(topic);
+        const byText = terms.every((t) => (r.dataset.hay ?? '').includes(t));
+        const hit = byTopic && byText;
+        r.hidden = !hit;
+        if (hit) shown++;
+      }
+      if (none) none.hidden = shown !== 0;
+      if (count)
+        count.textContent =
+          topic || terms.length
+            ? `${shown} of ${rows.length} ${rows.length === 1 ? 'post' : 'posts'}`
+            : `${rows.length} posts`;
+    };
+
+    for (const c of chips) {
+      c.addEventListener('click', () => {
+        topic = c.dataset.topic ?? '';
+        for (const o of chips) o.setAttribute('aria-pressed', String(o === c));
+        run();
+      });
+    }
+
+    q?.addEventListener('input', run);
+    q?.addEventListener('focus', () => kbd && (kbd.hidden = true));
+    addEventListener('keydown', (e) => {
+      const t = e.target as HTMLElement;
+      const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA');
+      if (e.key === '/' && !typing) {
+        e.preventDefault();
+        q?.focus();
+      }
+      if (e.key === 'Escape' && document.activeElement === q && q) {
+        q.value = '';
+        run();
+      }
+    });
+
+    const seed = new URLSearchParams(location.search).get('q');
+    if (seed && q) {
+      q.value = seed;
+      run();
+    }
+  </script>
+</Page>
+
+<style>
+  .sf {
+    margin: 0 0 1rem;
+  }
+  .sf__field {
+    position: relative;
+    max-width: 32rem;
+  }
+  .sf__in {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    font-family: inherit;
+    font-size: var(--t-root);
+    color: var(--ink);
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 140ms var(--ease), box-shadow 140ms var(--ease);
+  }
+  .sf__in::placeholder {
+    color: var(--muted);
+  }
+  .sf__in:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-tint);
+  }
+  .sf__kbd {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.12rem 0.42rem;
+    border: 1px solid var(--line-strong);
+    border-bottom-width: 2px;
+    border-radius: var(--r-sm);
+    background: var(--surface);
+    color: var(--muted);
+    font: 600 0.75rem/1.4 'Chivo Mono', monospace;
+    pointer-events: none;
+  }
+  .sf__kbd[hidden] {
+    display: none;
+  }
+  .sf__count {
+    margin: 1.25rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 2rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .fchip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: 99px;
+    background: var(--bg);
+    color: var(--body);
+    font: 500 0.875rem/1.2 inherit;
+    cursor: pointer;
+    transition: border-color 140ms var(--ease), background-color 140ms var(--ease),
+      color 140ms var(--ease);
+  }
+  .fchip:hover {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+  .fchip__n {
+    font-size: var(--t-xs);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .fchip[aria-pressed='true'] {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .fchip[aria-pressed='true'] .fchip__n {
+    /* brand-deep on lime is 2.75:1 — ink is 9.97:1, and weight does the
+       separating instead of colour. */
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .noneleft[hidden] {
+    display: none;
+  }
+  .noneleft {
+    padding: 2.5rem 0;
+    color: var(--muted);
+  }
+</style>

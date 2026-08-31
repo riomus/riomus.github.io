@@ -1,0 +1,433 @@
+---
+import Page from '../layouts/Page.astro';
+import ToptalBadge from '../components/ToptalBadge.astro';
+import Icon from '../components/Icon.astro';
+import {
+  profile,
+  strengths,
+  experience,
+  publications,
+  grants,
+  skills,
+  education,
+  certifications,
+  languages,
+} from '../data/record';
+
+const sortedPubs = [...publications].sort((a, b) => Number(b.year) - Number(a.year));
+---
+
+<Page
+  title="About"
+  description="Roman Bartusiak — AI researcher, staff machine learning engineer and AI platform architect. Experience, publications, skills, education and certifications."
+  lede={profile.summary}
+  datum={`${profile.yearsSoftware}+ years of software · ${profile.yearsAI}+ in AI/ML · ${publications.length} publications · ${grants.count} R&D projects`}
+>
+  <div class="cols">
+    <div>
+      <section class="sect">
+        <h2 class="sect__h">Core strengths</h2>
+        <dl class="defs" data-stagger>
+          {
+            strengths.map((x) => (
+              <div class="def">
+                <dt class="def__k">{x.k}</dt>
+                <dd class="def__v">{x.v}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <section class="sect">
+        <h2 class="sect__h">Experience</h2>
+        <ol class="run" data-stagger>
+          {
+            experience.map((e) => (
+              <li class="job">
+                <p class="job__when mono">{e.from ? `${e.from} — ${e.to}` : 'Earlier'}</p>
+                <div>
+                  <h3 class="job__role">{e.role}</h3>
+                  <p class="job__org">
+                    {e.org}
+                    {e.where && <span class="job__where"> · {e.where}</span>}
+                  </p>
+                  {e.notes.length > 0 && (
+                    <ul class="job__notes">
+                      {e.notes.map((n) => (
+                        <li>{n}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <section class="sect" id="publications">
+        <h2 class="sect__h">Publications</h2>
+        <p class="sect__note">
+          {publications.length} publications across NLP, graph and network science, distributed data
+          processing and representation learning, including work in Advances in Neural Information
+          Processing Systems, Neurocomputing, and IEEE and Springer LNCS venues. All indexed on <a
+            href="https://scholar.google.com/citations?hl=en&user=mk68epwAAAJ"
+            rel="noopener">Google Scholar</a
+          >. {grants.note}
+        </p>
+        <ol class="rows" data-stagger>
+          {
+            sortedPubs.map((p) => (
+              <li class="row">
+                <a class="row__link pub" href={p.href} rel="noopener">
+                  <span class="row__date mono">{p.year}</span>
+                  <div>
+                    <h3 class="row__t">
+                      {p.title}
+                      <Icon name="ext" class="icon--ghost" />
+                    </h3>
+                    {p.venue && <p class="row__d">{p.venue}</p>}
+                    <p class="pub__auth">{p.authors}</p>
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+
+      <section class="sect">
+        <h2 class="sect__h">Skills</h2>
+        <dl class="defs" data-stagger>
+          {
+            skills.map((x) => (
+              <div class="def def--row">
+                <dt class="def__k def__k--sm">{x.k}</dt>
+                <dd class="def__v">{x.v}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+    </div>
+
+    <aside class="side" data-reveal="up">
+      <section class="panel">
+        <h2 class="panel__h">Education</h2>
+        {
+          education.map((e) => (
+            <div class="panel__item">
+              <p class="panel__t">{e.what}</p>
+              <p class="panel__m">{e.org}</p>
+              <p class="panel__w mono">{e.when}</p>
+              {e.note && <p class="panel__n">{e.note}</p>}
+            </div>
+          ))
+        }
+      </section>
+
+      <section class="panel">
+        <h2 class="panel__h">Certifications</h2>
+        {
+          certifications.map((c) => (
+            <div class="panel__item">
+              <p class="panel__t">{c.what}</p>
+              <p class="panel__m">
+                {c.org} · <span class="mono">{c.when}</span>
+              </p>
+            </div>
+          ))
+        }
+      </section>
+
+      <section class="panel">
+        <h2 class="panel__h">Languages</h2>
+        {
+          languages.map((l) => (
+            <p class="panel__lang">
+              <span class="panel__t">{l.k}</span>
+              <span class="panel__m" style="margin:0">
+                {l.v}
+              </span>
+            </p>
+          ))
+        }
+      </section>
+
+      <section class="panel">
+        <h2 class="panel__h">Elsewhere</h2>
+        <ul class="panel__links">
+          <li>
+            <a href="https://www.linkedin.com/in/romanbartusiak/" rel="me noopener">LinkedIn</a>
+          </li>
+          <li><a href="https://github.com/riomus" rel="me noopener">GitHub</a></li>
+          <li>
+            <a href="https://scholar.google.com/citations?hl=en&user=mk68epwAAAJ" rel="noopener"
+              >Google Scholar</a
+            >
+          </li>
+          <li><a data-mail data-mail-text href="/about/">Email</a></li>
+          <li><a href="/pubring.asc">PGP public key</a></li>
+        </ul>
+        <p class="panel__n">{profile.location}</p>
+      </section>
+
+      <section class="panel panel--hire">
+        <h2 class="panel__h">Get in touch</h2>
+        <p class="panel__n" style="margin-top:.35rem">Top-3% of the Toptal network since 2018.</p>
+        <div class="panel__badge"><ToptalBadge scale={0.58} /></div>
+        <p style="margin:1.1rem 0 0">
+          <a class="btn btn--accent" style="width:100%" data-mail href="/about/">Contact me</a>
+        </p>
+        <p style="margin:0.5rem 0 0">
+          <a
+            class="btn btn--ghost btn--sm"
+            style="width:100%"
+            href="https://www.toptal.com/developers/resume/roman-bartusiak#Bv9aj2"
+            rel="noopener">Toptal profile</a
+          >
+        </p>
+      </section>
+    </aside>
+  </div>
+</Page>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 19rem);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .sect + .sect {
+    margin-top: clamp(2.5rem, 5vw, 3.75rem);
+  }
+  .sect__h {
+    margin: 0 0 1.35rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+    font-size: var(--d-section);
+    font-weight: 650;
+    font-stretch: 90%;
+    letter-spacing: -0.024em;
+    color: var(--ink);
+  }
+  .sect:first-child .sect__h {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .sect__note {
+    margin: 0 0 1.5rem;
+    max-width: 66ch;
+    font-size: var(--t-md);
+    color: var(--body);
+  }
+  .sect__note a {
+    color: var(--accent);
+  }
+
+  .defs {
+    margin: 0;
+  }
+  .def {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .def:first-child {
+    padding-top: 0;
+  }
+  .def__k {
+    margin: 0 0 0.35rem;
+    font-size: var(--t-lg);
+    font-weight: 650;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+  }
+  .def__k--sm {
+    font-size: var(--t-base);
+    font-weight: 600;
+    color: var(--muted);
+    margin: 0;
+  }
+  .def__v {
+    margin: 0;
+    font-size: var(--t-md);
+    line-height: 1.6;
+    color: var(--body);
+    max-width: 66ch;
+  }
+  .def--row {
+    display: grid;
+    grid-template-columns: 10.5rem minmax(0, 1fr);
+    gap: 0 1.25rem;
+    align-items: baseline;
+  }
+
+  .run {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .job {
+    display: grid;
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    gap: 0 1.75rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .job:first-child {
+    padding-top: 0;
+  }
+  .job__when {
+    margin: 0.25rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .job__role {
+    margin: 0;
+    font-size: var(--t-lg);
+    font-weight: 650;
+    letter-spacing: -0.019em;
+    line-height: 1.3;
+  }
+  .job__org {
+    margin: 0.2rem 0 0;
+    font-size: var(--t-md);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .job__where {
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .job__notes {
+    margin: 0.7rem 0 0;
+    padding-left: 1.1rem;
+    font-size: var(--t-md);
+    line-height: 1.6;
+    color: var(--body);
+    max-width: 66ch;
+  }
+  .job__notes li + li {
+    margin-top: 0.35rem;
+  }
+  .job__notes li::marker {
+    color: var(--line-strong);
+  }
+
+  .pub {
+    align-items: baseline;
+  }
+  .pub__auth {
+    margin: 0.3rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--muted);
+  }
+
+  .side {
+    display: grid;
+    gap: 1rem;
+    position: sticky;
+    top: 5rem;
+  }
+  .panel {
+    padding: 1.15rem 1.25rem 1.35rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    background: var(--bg);
+  }
+  .panel--hire {
+    background: var(--surface);
+  }
+  .panel__h {
+    margin: 0 0 0.9rem;
+    font-size: var(--t-sm);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .panel__item + .panel__item {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--line);
+  }
+  .panel__t {
+    margin: 0;
+    font-size: var(--t-md);
+    font-weight: 650;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .panel__m {
+    margin: 0.2rem 0 0;
+    font-size: var(--t-base);
+    color: var(--body);
+    line-height: 1.45;
+  }
+  .panel__w {
+    margin: 0.3rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--muted);
+  }
+  .panel__n {
+    margin: 0.45rem 0 0;
+    font-size: var(--t-base);
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .panel__lang {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 0 0 0.5rem;
+  }
+  .panel__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+  .panel__links a {
+    font-size: var(--t-base);
+    color: var(--accent);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .panel__links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.17em;
+  }
+  .panel__badge {
+    display: grid;
+    place-items: center;
+    margin-top: 0.85rem;
+  }
+
+  @media (max-width: 900px) {
+    .cols {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .side {
+      position: static;
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .job,
+    .def--row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.3rem;
+    }
+    .job__when {
+      margin: 0;
+      order: -1;
+    }
+  }
+</style>

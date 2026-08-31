@@ -1,66 +1,53 @@
-# Copilot Instructions for riomus.github.io
+# Copilot instructions for riomus.github.io
 
-This repository is a Jekyll site using the Hydeout theme, customized for personal or project pages. Follow these guidelines to be productive as an AI coding agent:
+Personal site of Roman Bartusiak at **bartusiak.ai**. Astro, static output,
+deployed to GitHub Pages by `.github/workflows/deploy.yml`. It was a Jekyll
+site on the Hydeout theme until the Astro rebuild; ignore any Jekyll
+conventions you find referenced elsewhere.
 
-## Architecture Overview
-- **Jekyll-based static site**: Content is organized in Markdown files (`_posts/`, root-level `.md` files) and rendered via layouts in `_layouts/`.
-- **Hydeout theme**: The site uses the Hydeout theme, with customizations possible via SASS variables and partials in `_includes/` and `_sass/`.
-- **Assets**: Custom styles go in `assets/css/main.scss`. Images are in `assets/img/`.
-- **Site configuration**: `_config.yml` controls site-wide settings, including theme, pagination, Disqus, and Google Analytics.
+## Architecture
 
-## Key Workflows
-- **Local development**: Use `bundle install` to install dependencies, then `bundle exec jekyll serve` to run the site locally.
-- **Theme customization**: Override SASS variables in `assets/css/main.scss` and import Hydeout's SCSS. See `_sass/hydeout/_variables.scss` for available variables.
-- **Content creation**:
-  - Posts: Add Markdown files to `_posts/` with appropriate front matter.
-  - Pages: Add Markdown or HTML files at the root, using layouts from `_layouts/`.
-  - Tags/Categories: Create pages with `tags` or `category` layout for sidebar navigation.
-- **Sidebar navigation**: Pages must have `sidebar_link: true` in front matter to appear in the sidebar. Use `sidebar_sort_order` to control order.
-- **Disqus/Analytics**: Enable by adding `disqus.shortname` or `google_analytics` to `_config.yml`.
+- **Content**: `src/content/posts/*.md`, loaded by a content collection defined
+  in `src/content.config.ts`. Filenames are `YYYY-MM-DD-slug.md` and the date
+  drives both the URL and the volume number.
+- **CV facts**: `src/data/record.ts` — experience, publications, software,
+  courses, education, certifications. Every entry is a real fact. Do not add,
+  inflate, or invent one.
+- **Routing**: `src/pages/[...slug].astro` builds posts at `/YYYY/MM/DD/slug/`.
+  Tag pages group by slug so two spellings of a tag cannot collide.
+- **Styles**: one stylesheet, `src/styles/global.css`, plus scoped `<style>`
+  blocks per component. No CSS framework.
+- **Markdown**: Astro 7's Sätteri processor. The `dieDefaults` hast plugin in
+  `astro.config.mjs` wraps tables for horizontal scroll and lazy-loads images.
 
-## Project-Specific Patterns
-- **Partial overrides**: Customize site sections by editing or replacing files in `_includes/` (e.g., `custom-head.html`, `custom-foot.html`, `copyright.html`).
-- **Minimal JavaScript**: JS is only loaded for Disqus and Google Analytics if configured.
-- **Flexbox layout**: CSS uses Flexbox; degrades gracefully if unsupported.
-- **Pagination**: Controlled via `paginate` in `_config.yml` and `index.html` layout.
+## The visual world
 
-## External Integrations
-- **Hydeout theme**: Managed via Gemfile and `_config.yml` (`remote_theme: fongandrew/hydeout`).
-- **Disqus**: Add `disqus.shortname` to `_config.yml`.
-- **Google Analytics**: Add `google_analytics` property to `_config.yml`.
+Read the direction contract at the top of `<body>` in `src/layouts/Base.astro`
+before touching the design, and `DESIGN.md` for the recorded system. Short
+version: the page is a chip die floorplan — gutterless blocks tiling the frame,
+separated only by the hairline scribe (`--scribe`), navigated from a bond-pad
+ring. Textures (`.tex--sram`, `--logic`, `--io`, `--analog`, `--pads`) are
+produced live from gradients and magnify on hover via the `--t` tile size.
 
-## Examples
-- To add a new tag page:
-  ```markdown
-  ---
-  layout: tags
-  title: Tags
-  ---
-  ```
-- To override sidebar background color:
-  ```scss
-  $sidebar-bg-color: #ac4142;
-  @import "hydeout";
-  ```
-- To add a page to the sidebar:
-  ```markdown
-  ---
-  layout: page
-  title: My Page
-  sidebar_link: true
-  sidebar_sort_order: 10
-  ---
-  ```
+Two rules that are easy to break:
+- `.block > *:not(.tex)` — the texture layer must keep its own absolute
+  positioning. Adding a blanket `.block > *` position rule kills every texture.
+- Textures are masked away from the reading area. If you raise their opacity,
+  re-check text contrast.
 
-## Key Files & Directories
-- `_config.yml`: Site configuration
-- `Gemfile`: Ruby dependencies
-- `_includes/`: HTML partials for customization
-- `_sass/`: SASS partials and variables
-- `assets/css/main.scss`: Custom styles
-- `_layouts/`: Page and post layouts
-- `_posts/`: Blog posts
+## Constraints
 
----
+- Static output only, GitHub Pages, no server runtime.
+- The Toptal badge (`src/components/ToptalBadge.astro`) is Toptal's brand
+  asset. Place and scale it; never redraw it. Its single-letter classes are
+  scoped under `#r` deliberately.
+- Legacy `/YYYY/MM/DD/slug.html` URLs ship as stubs in `public/`. Keep them.
+- Polish characters must render: both `latin` and `latin-ext` font subsets are
+  self-hosted in `public/fonts/`.
 
-If any section is unclear or missing, please provide feedback for further refinement.
+## Workflows
+
+```bash
+npm install && npm run dev     # http://localhost:4321
+npm run build                  # -> dist/
+```

@@ -1,0 +1,81 @@
+---
+import Page from '../layouts/Page.astro';
+import Icon from '../components/Icon.astro';
+import { courses } from '../data/record';
+
+const withRepo = courses.filter((c) => c.href).length;
+---
+
+<Page
+  title="Teaching"
+  description="Courses Roman Bartusiak lectured at Wrocław University of Science and Technology."
+  lede="There was a time in my life when I lectured at Wrocław University of Science and Technology. These are the courses I taught."
+  datum={`${courses.length} courses · Wrocław University of Science and Technology`}
+>
+  <ul class="rows" data-stagger>
+    {
+      courses.map((c) => (
+        <li class="row">
+          {c.href ? (
+            <a class="row__link co" href={c.href} rel="noopener">
+              <div>
+                <h2 class="row__t co__t">{c.name}</h2>
+                <p class="co__repo mono">
+                  <Icon name="github" class="icon--ghost" />
+                  {c.hrefLabel}
+                </p>
+              </div>
+            </a>
+          ) : (
+            <div class="row__link co co--plain">
+              <div>
+                <h2 class="row__t co__t">{c.name}</h2>
+                <p class="co__none">Course materials are no longer online</p>
+              </div>
+            </div>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="note">
+    The original course sites were hosted on <span class="mono">.ml</span> domains that have since
+    lapsed. {withRepo} of the {courses.length} still have their material on GitHub and are linked above;
+    the rest are listed for the record.
+  </p>
+</Page>
+
+<style>
+  .co {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .co--plain {
+    cursor: default;
+  }
+  .co--plain:hover {
+    background: transparent;
+  }
+  .co__t {
+    font-size: var(--t-xl);
+  }
+  .co__repo {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0.4rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--accent);
+  }
+  .co__none {
+    margin: 0.4rem 0 0;
+    font-size: var(--t-sm);
+    color: var(--muted);
+  }
+  .note {
+    margin: 1.75rem 0 0;
+    max-width: 62ch;
+    font-size: var(--t-base);
+    color: var(--muted);
+  }
+</style>

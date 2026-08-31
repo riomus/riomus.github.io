@@ -1,0 +1,28 @@
+{
+  "name": "bartusiak-ai",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riomus/riomus.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riomus/riomus.github.io/issues"
+  },
+  "homepage": "https://github.com/riomus/riomus.github.io#readme",
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.3.8",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.9"
+  },
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}

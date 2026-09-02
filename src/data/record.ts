@@ -29,7 +29,19 @@ export const strengths = [
   },
 ];
 
-export const experience = [
+type Job = {
+  role: string;
+  org: string;
+  where?: string;
+  from?: string;
+  to: string;
+  /** Set when the role ran alongside a main one, so the list can say so
+   * rather than implying two full-time jobs at once. */
+  tag?: string;
+  notes: string[];
+};
+
+export const experience: Job[] = [
   {
     role: 'Looking for the next thing',
     org: 'Independent research',
@@ -66,6 +78,19 @@ export const experience = [
       'Optimised portfolio rebalancing algorithms and batch execution paths, making rebalancing pipelines 2× faster while preserving correctness, auditability and operational controls.',
       'Owned staff-level architecture for JVM-based investment and platform services, translating broad product and operational requirements into APIs, migration plans and delivery milestones.',
       'Improved reliability of critical fintech workflows through stronger test coverage, observability, rollback safety and incident follow-up.',
+    ],
+  },
+  {
+    role: 'Founder / Researcher',
+    org: 'Causality · FN · Roosters',
+    where: 'Remote · Wrocław',
+    from: '10.2020',
+    to: 'Present',
+    tag: 'Alongside full-time work',
+    notes: [
+      'Define R&D direction for ML systems, with emphasis on causal reasoning, semantic search, synthetic data generation, graph processing and decision-support tooling.',
+      'Write research and grant scopes, convert hypotheses into implementation milestones, and validate prototypes against concrete product and technical risks.',
+      'Stay hands-on with architecture, model evaluation, experimental software and technical communication with partners and stakeholders.',
     ],
   },
   {

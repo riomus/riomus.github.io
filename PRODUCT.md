@@ -66,6 +66,7 @@ All four defects recorded during init were fixed during the Astro rebuild: the l
 **Resolved since the rebuild (user-confirmed, 2026-08-31):**
 - **Availability:** the site no longer claims active availability. The home band reads "Open to interesting work". Revisit if that changes.
 - **Contact:** email is published as `roman@bartusiak.ai`, assembled at runtime from base64 so naive harvesters miss it. The phone number on the CV is deliberately **not** published. The personal gmail address is **not** published.
+- **CV:** `public/roman-bartusiak-cv.pdf` is linked from the About page. It is `CV___EN (7).pdf` with the phone number stripped from the header — the contact line was re-centred and the following line's `Td` adjusted so the rest of the document is byte-for-byte in place. Regenerate it with `scripts/strip-cv-phone.py` whenever a new revision is dropped in, and re-check that the phone is gone.
 - **Toptal:** the CV omits the freelance role entirely; the user asked to keep it on the site alongside the CV record. The badge stays — it is the one hard must-have.
 - **Doctorate:** stated as the CV states it — doctoral studies in Computer Science, 2015–2022, research area scalable massive networked data processing, supervisor Prof. Przemysław Kazienko. The previous site's "postponed" framing is retired.
 

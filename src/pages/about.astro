@@ -169,6 +169,7 @@ const sortedPubs = [...publications].sort((a, b) => Number(b.year) - Number(a.ye
             >
           </li>
           <li><a data-mail data-mail-text href="/about/">Email</a></li>
+          <li><a href="/roman-bartusiak-cv.pdf">CV (PDF)</a></li>
           <li><a href="/pubring.asc">PGP public key</a></li>
         </ul>
         <p class="panel__n">{profile.location}</p>
@@ -180,6 +181,11 @@ const sortedPubs = [...publications].sort((a, b) => Number(b.year) - Number(a.ye
         <div class="panel__badge"><ToptalBadge scale={0.58} /></div>
         <p style="margin:1.1rem 0 0">
           <a class="btn btn--accent" style="width:100%" data-mail href="/about/">Contact me</a>
+        </p>
+        <p style="margin:0.5rem 0 0">
+          <a class="btn btn--ghost btn--sm" style="width:100%" href="/roman-bartusiak-cv.pdf"
+            >Download CV (PDF)</a
+          >
         </p>
         <p style="margin:0.5rem 0 0">
           <a

@@ -123,8 +123,11 @@ const shownSoftware = software;
     <div class="wrap">
       <div class="section__head" data-reveal="up">
         <div>
-          <h2 class="section__h">Open source</h2>
-          <p class="section__sub">Libraries I wrote and still stand behind.</p>
+          <h2 class="section__h">Projects</h2>
+          <p class="section__sub">
+            Libraries and systems I wrote and still stand behind — most of them open source, two
+            still being built.
+          </p>
         </div>
       </div>
       <ul class="rows rows--tight" data-stagger>
@@ -135,7 +138,10 @@ const shownSoftware = software;
                 <a class="row__link row__link--tight" href={s.href} rel="noopener">
                   <span class="row__date mono">{s.name}</span>
                   <div>
-                    <p class="row__d">{s.note}</p>
+                    <p class="row__d">
+                      {s.wip && <span class="tag sw__wip">Under construction</span>}
+                      {s.note}
+                    </p>
                   </div>
                 </a>
               ) : (
@@ -271,6 +277,12 @@ const shownSoftware = software;
   }
   .rows--tight .row__d {
     margin: 0;
+  }
+  /* Runs into the description rather than sitting above it — the home rows are
+     a single line of prose — but still leads, so the status arrives before the
+     reader has decided what the thing is. */
+  .sw__wip {
+    margin-right: 0.5rem;
   }
   .row__auth {
     margin: 0.3rem 0 0;

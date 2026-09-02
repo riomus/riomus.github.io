@@ -219,7 +219,31 @@ export const grants = {
   note: 'Eight research and R&D projects. R&D leader and author for synthetic data generation, semantic search and dialogue-system projects; participant in RENOIR (H2020-MSCA-RISE) and ENGINE (FP7).',
 };
 
-export const software = [
+type Project = {
+  name: string;
+  years: string;
+  note: string;
+  href: string;
+  /** Still being built. Labelled in the list so it never reads as something
+   * you can pick up and ship with today. */
+  wip?: boolean;
+};
+
+export const software: Project[] = [
+  {
+    name: 'BORSUK',
+    years: '',
+    note: 'Blob-oriented Retrieval with Segmental Unified KNN. Keeps the whole index as immutable Parquet objects in the S3, MinIO, SeaweedFS, GCS or Azure storage you already pay for, and answers a query with a few hundred bytes of resident memory — no always-on RAM cluster to provision, scale or feed between queries.',
+    href: 'https://causality.pl/borsuk/',
+    wip: true,
+  },
+  {
+    name: 'SFORA',
+    years: '',
+    note: 'Deep metric learning library. Its method, HERD — Hypergraph EMA-teacher Relational Distillation — plus a multi-model ensemble beat the reported state of the art on the same architecture for CUB-200 by more than a point.',
+    href: 'https://causality.pl/sfora/',
+    wip: true,
+  },
   {
     name: 'SparklingGraph',
     years: '2016 – present',

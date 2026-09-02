@@ -49,7 +49,7 @@ const sortedPubs = [...publications].sort((a, b) => Number(b.year) - Number(a.ye
                 <div>
                   <h3 class="job__role">
                     {e.role}
-                    {e.tag && <span class="job__tag">{e.tag}</span>}
+                    {e.tag && <span class="tag job__tag">{e.tag}</span>}
                   </h3>
                   <p class="job__org">
                     {e.org}
@@ -306,20 +306,7 @@ const sortedPubs = [...publications].sort((a, b) => Number(b.year) - Number(a.ye
   /* Carried on the role line so the qualifier arrives before the dates do —
      two overlapping "Present" rows otherwise read as two full-time jobs. */
   .job__tag {
-    display: inline-block;
     margin-left: 0.55rem;
-    padding: 0.12rem 0.45rem;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--r-xs);
-    background: var(--surface-2);
-    font-size: var(--t-2xs);
-    font-weight: 600;
-    font-stretch: 100%;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    vertical-align: 0.14em;
-    color: var(--muted);
   }
   .job__org {
     margin: 0.2rem 0 0;

@@ -650,6 +650,25 @@ a.chip:hover {
   color: var(--muted);
 }
 
+/* A status qualifier rather than a link: squarer, quieter and outlined, so it
+   never reads as something to click the way a .chip does. Consumers own the
+   spacing, since it sits inside a heading in one place and a row in another. */
+.tag {
+  display: inline-block;
+  padding: 0.12rem 0.45rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  font-stretch: 100%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: 0.14em;
+  color: var(--muted);
+}
+
 /* ─── Finding ────────────────────────────────────────────────────────────
    The one measured line a post is worth reading for. */
 

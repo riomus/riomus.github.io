@@ -6,8 +6,8 @@ import { software } from '../data/record';
 
 <Page
   title="Software"
-  description="Open-source libraries by Roman Bartusiak: SparklingGraph, polish-sentiment, vibe.js, OpticalFlow.js, HMM.js and Data Projector."
-  lede="Libraries I wrote and still stand behind — distributed graph processing, Polish-language sentiment, and a handful of computer-vision and sequence algorithms ported to JavaScript."
+  description="Projects and open-source libraries by Roman Bartusiak: BORSUK, SFORA, SparklingGraph, polish-sentiment, vibe.js, OpticalFlow.js, HMM.js and Data Projector."
+  lede="Libraries and systems I wrote and still stand behind — object-storage vector retrieval, deep metric learning, distributed graph processing, Polish-language sentiment, and a handful of computer-vision and sequence algorithms ported to JavaScript. Two are still being built, and say so."
   datum={`${software.length} projects`}
 >
   <ul class="rows" data-stagger>
@@ -21,6 +21,7 @@ import { software } from '../data/record';
                 <Icon name="ext" class="icon--ghost" />
               </span>
               <div>
+                {s.wip && <p class="sw__wip"><span class="tag">Under construction</span></p>}
                 <p class="row__d" style="margin:0">
                   {s.note}
                 </p>
@@ -66,6 +67,11 @@ import { software } from '../data/record';
   }
   .sw--plain .sw__name {
     color: var(--muted);
+  }
+  /* Above the description, not after it: the status has to land before the
+     reader has decided what the thing is. */
+  .sw__wip {
+    margin: 0 0 0.4rem;
   }
   .sw__years {
     margin: 0.4rem 0 0;

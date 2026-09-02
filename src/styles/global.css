@@ -1079,11 +1079,17 @@ main {
 .settle > * {
   animation: settle 760ms var(--ease) backwards;
 }
+/* Eight slots at a 65ms cadence: enough for the hero as it stands, with
+   headroom, so a new paragraph can never fall past the end of the list and
+   arrive *before* the ones above it. */
 .settle > *:nth-child(1) { animation-delay: 60ms; }
-.settle > *:nth-child(2) { animation-delay: 150ms; }
-.settle > *:nth-child(3) { animation-delay: 230ms; }
-.settle > *:nth-child(4) { animation-delay: 310ms; }
-.settle > *:nth-child(5) { animation-delay: 390ms; }
+.settle > *:nth-child(2) { animation-delay: 125ms; }
+.settle > *:nth-child(3) { animation-delay: 190ms; }
+.settle > *:nth-child(4) { animation-delay: 255ms; }
+.settle > *:nth-child(5) { animation-delay: 320ms; }
+.settle > *:nth-child(6) { animation-delay: 385ms; }
+.settle > *:nth-child(7) { animation-delay: 450ms; }
+.settle > *:nth-child(n + 8) { animation-delay: 515ms; }
 
 /* ── Scroll reveals ─────────────────────────────────────────────────── */
 

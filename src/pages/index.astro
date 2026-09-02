@@ -4,13 +4,12 @@ import Base from '../layouts/Base.astro';
 import PostRow from '../components/PostRow.astro';
 import ToptalBadge from '../components/ToptalBadge.astro';
 import Icon from '../components/Icon.astro';
-import { profile, publications, software, experience, grants } from '../data/record';
+import { profile, publications, software, grants } from '../data/record';
 
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 const recent = posts.slice(0, 4);
-const current = experience.filter((e) => e.to === 'Present');
 /** Newest first, so the home page shows the work that dates best. */
 const featured = [...publications].sort((a, b) => Number(b.year) - Number(a.year));
 const shownSoftware = software;
@@ -23,9 +22,14 @@ const shownSoftware = software;
       <h1 class="display">Roman&nbsp;Bartusiak</h1>
       <p class="hero__role">{profile.title} · Wrocław, Poland</p>
       <p class="lede hero__lede">
-        I build production AI and ML systems — agentic platforms, NLP, semantic search and the
-        distributed backends underneath them — turning research and prototypes into{' '}
-        <span class="hl">systems that hold up</span>.
+        I build production AI and ML systems — agentic platforms, NLP, semantic search — and the
+        distributed, high-throughput backends they run on. Research and prototypes turned into{' '}
+        <span class="hl">systems that hold up</span> under real load.
+      </p>
+      <p class="hero__eng">
+        Distributed computing and performance are the other half of the job: Spark and graph
+        processing, event-driven multi-tenant platforms, JVM services rebuilt to run{' '}
+        <b>2× faster</b>, and pipelines that stay correct while they scale.
       </p>
       <p class="hero__actions">
         <a class="btn btn--accent" data-mail href="/about/">
@@ -34,7 +38,8 @@ const shownSoftware = software;
         <a class="btn btn--ghost" href="/about/">Read the full record</a>
       </p>
       <p class="hero__now">
-        Now: <b>Founder / Researcher</b> at Causality · Roosters, and freelance through <b>Toptal</b>.
+        Now: <b>looking for the next thing</b> — experimenting with vector indexes, JEPA-like models
+        and similarity learning.
       </p>
       <p class="hero__cred">
         <b>{profile.yearsSoftware}+ years</b> writing software, <b>{profile.yearsAI}+</b> of them in
@@ -190,6 +195,21 @@ const shownSoftware = software;
   .hero__lede {
     margin: 0.9rem 0 0;
   }
+  /* The engineering half of the lede: same measure, one step quieter, so the
+     hero reads as one paragraph with a subordinate clause rather than two
+     competing claims. */
+  .hero__eng {
+    margin: 0.8rem 0 0;
+    max-width: 58ch;
+    font-size: var(--t-md);
+    line-height: 1.65;
+    color: var(--body);
+  }
+  .hero__eng b {
+    font-weight: 650;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
@@ -236,9 +256,6 @@ const shownSoftware = software;
     font-variant-numeric: tabular-nums;
   }
 
-  .now {
-    cursor: default;
-  }
   .more {
     margin: 1.5rem 0 0;
   }
@@ -252,23 +269,6 @@ const shownSoftware = software;
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
-  .now__role {
-    margin: 0;
-    font-size: var(--t-root);
-    font-weight: 650;
-    letter-spacing: -0.018em;
-    line-height: 1.3;
-    color: var(--ink);
-  }
-  .now__org {
-    margin: 0.35rem 0 0;
-    font-size: var(--t-base);
-    color: var(--body);
-  }
-  .now__where {
-    color: var(--muted);
-  }
-
   .rows--tight .row__d {
     margin: 0;
   }

@@ -4,14 +4,14 @@
 export const profile = {
   /** What he is, not where he works — this line outlives any employer. The
    * Panasonic title lives in the experience list, correctly dated. */
-  title: 'AI researcher and machine learning engineer',
+  title: 'AI researcher, ML and distributed systems engineer',
   location: 'Wrocław, Poland',
   /** Corrected directly by Roman: 23 years writing software, 12 of them in
    * AI/ML. The CV's "14+" counted only the professional ML span. */
   yearsSoftware: 23,
   yearsAI: 12,
   summary:
-    'I build production AI/ML and data-intensive systems across agentic AI, NLP, semantic search, graph processing and distributed backend platforms. I have been writing software for 23 years — it started with Delphi and Object Pascal for local companies — and working in AI and machine learning for more than 12. I combine that with staff-level architecture ownership, CTO and founder execution, nine publications and eight research and R&D projects, and I specialise in turning research and prototypes into reliable production systems with explicit trade-offs across quality, latency, throughput, cost and operational risk.',
+    'I build production AI/ML and data-intensive systems across agentic AI, NLP, semantic search, graph processing and distributed backend platforms — and the high-throughput, horizontally scalable infrastructure they run on. I have been writing software for 23 years — it started with Delphi and Object Pascal for local companies — and working in AI and machine learning for more than 12. I combine that with staff-level architecture ownership, CTO and founder execution, nine publications and eight research and R&D projects, and I specialise in turning research and prototypes into reliable production systems with explicit trade-offs across quality, latency, throughput, cost and operational risk.',
 };
 
 export const strengths = [
@@ -31,6 +31,16 @@ export const strengths = [
 
 export const experience = [
   {
+    role: 'Looking for the next thing',
+    org: 'Independent research',
+    where: 'Wrocław',
+    from: '09.2026',
+    to: 'Present',
+    notes: [
+      'Experimenting with vector indexes, JEPA-like models and similarity learning.',
+    ],
+  },
+  {
     role: 'Staff Machine Learning Engineer / AI Platform Architect',
     org: 'Panasonic, Global Applied AI',
     where: 'Remote',
@@ -43,18 +53,6 @@ export const experience = [
       'Designed massively parallel, at-least-once processing for multi-agent invocation workflows, with in-order processing guarantees where required.',
       'Built observability and evaluation for agentic workflows: tenant-scoped monitoring, model latency and cost tracking, API/SDK evaluation hooks and LLM-as-a-judge regression workflows.',
       'Helped scale KanpAI to 20+ agents across 10+ domains, 20+ model families and 30+ training datasets, supporting 70+ concurrent enterprise users during live workshops and hackathons.',
-    ],
-  },
-  {
-    role: 'Founder / Researcher',
-    org: 'Causality · Roosters',
-    where: 'Remote · Wrocław',
-    from: '10.2020',
-    to: 'Present',
-    notes: [
-      'Define R&D direction for ML systems, with emphasis on causal reasoning, semantic search, synthetic data generation, graph processing and decision-support tooling.',
-      'Write research and grant scopes, convert hypotheses into implementation milestones, and validate prototypes against concrete product and technical risks.',
-      'Stay hands-on with architecture, model evaluation, experimental software and technical communication with partners and stakeholders.',
     ],
   },
   {

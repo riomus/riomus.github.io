@@ -290,6 +290,12 @@ const specs = [
       top: 5.5rem;
       padding-block: clamp(2.25rem, 5vw, 3.25rem) 0;
     }
+    /* With the rail beside it, a plate breaking the measure runs under the
+       sticky rail. Keep it in the column. */
+    .article:has(.toc) :global(.plate) {
+      width: auto;
+      margin-inline: 0;
+    }
   }
   .toc__h {
     margin: 0 0 0.75rem;

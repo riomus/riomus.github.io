@@ -955,9 +955,10 @@ a.chip:hover {
 /* A figure is framed and captioned, never a bare raster on the page. */
 .prose .plate {
   /* The evidence gets to break the measure — it is the point of the post. */
-  width: min(var(--page), calc(100vw - 2 * clamp(1.25rem, 5vw, 2.5rem)));
-  margin: 2.5rem 50%;
-  transform: translateX(-50%);
+  /* Centred by negative margins, not transform: the reveal owns transform. */
+  --plate-w: min(var(--page), calc(100vw - 2 * clamp(1.25rem, 5vw, 2.5rem)));
+  width: var(--plate-w);
+  margin: 2.5rem calc((100% - var(--plate-w)) / 2);
   padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
